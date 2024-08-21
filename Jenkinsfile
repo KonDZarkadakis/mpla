@@ -5,7 +5,7 @@ pipeline {
     agent {
         // label 'kostaras-agent'
         docker {
-            image 'jenkins/agent:alpine-jdk11' // The base image for building the Docker image
+            image 'docker:latest' // The base image for building the Docker image
             args '--network=jenkins_gsis_jenkins_network -e DOCKER_HOST=tcp://docker-proxy:2375'
             reuseNode true
         }
