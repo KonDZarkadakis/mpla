@@ -12,15 +12,7 @@ pipeline {
     // environment {
     //     DOCKER_HOST = 'tcp://docker-proxy:2375' // Set the Docker host environment variable for all stages
     // }
-    
-    docker.image('docker:latest').inside('-e KOSTARAS=123'){
-        stages {
-            stage ('la') {
-                sh 'echo $KOSTARAS'
-            }
-        }
-    }
-    
+
     stages {
         
         stage('Initialize') {
