@@ -1,21 +1,19 @@
-// currentBuild.displayName = "Docker-Agent#"+currentBuild.number
-
 pipeline {
     
     agent {
-        // label 'kostaras-agent'
         docker {
-            label 'docker-staging-agent'
             image 'docker:latest' // The base image for building the Docker image
+            // args '-v /var/run/docker.sock:/var/run/docker.sock' // Bind Docker socket for building
             args '--network=jenkins_gsis_jenkins_network -e DOCKER_HOST=tcp://docker-proxy:2375'
-            reuseNode true
+            reuseNode true // Allows reusing the agent for the entire pipeline
         }
     }
 
     // environment {
     //     DOCKER_HOST = 'tcp://docker-proxy:2375' // Set the Docker host environment variable for all stages
     // }
-
+    
+    
     stages {
         
         stage('Initialize') {
@@ -56,8 +54,16 @@ pipeline {
                 sh '''
                     echo "$DOCKER_HOST"
                     docker ps
-                    docker build --no-cache -t test_mpla_kostaras_new ./mpla/
+                    docker build -t test_mpla_kostaras_new ./mpla/
                 '''
+                // dir('mpla') {
+                //     // Build the Docker image using the Dockerfile in the repository
+                //     sh 'ls -alh'
+                //     sh 'pwd'
+                //     echo "$DOCKER_HOST"
+                //     sh 'docker ps'
+                //     sh 'docker build -t test_mpla_kostaras .'
+                // }
             }
         }
         
