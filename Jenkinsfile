@@ -42,19 +42,19 @@ pipeline {
             }
         }
         
-        stage ('Repo pull') {
-            steps {
-                // Clone the repository
-                sh 'git clone https://github.com/KonDZarkadakis/mpla.git'
-            }
-        }
+        // stage ('Repo pull') {
+        //     steps {
+        //         // Clone the repository
+        //         sh 'git clone https://github.com/KonDZarkadakis/mpla.git'
+        //     }
+        // }
         
         stage ('Build Image') {
             steps {
                 sh '''
                     echo "$DOCKER_HOST"
                     docker ps
-                    docker build -t test_mpla_kostaras_new ./mpla/
+                    docker build -t test_mpla_kostaras_new .
                 '''
                 // dir('mpla') {
                 //     // Build the Docker image using the Dockerfile in the repository
@@ -78,11 +78,11 @@ pipeline {
     }
     
     
-    post {
-        always {
-            sh 'rm -rf mpla/'
-        }
-    }
+    // post {
+    //     always {
+    //         sh 'rm -rf mpla/'
+    //     }
+    // }
     
     
 }
