@@ -78,11 +78,13 @@ pipeline {
     }
     
     
-    // post {
-    //     always {
-    //         sh 'rm -rf mpla/'
-    //     }
-    // }
+    post {
+        always {
+            // sh 'rm -rf mpla/'
+            // Clean up the workspace, which includes the cloned repository and any generated files
+            cleanWs()
+        }
+    }
     
     
 }
