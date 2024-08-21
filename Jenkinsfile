@@ -1,6 +1,7 @@
 pipeline {
     
     agent {
+        label 'kostaras-agent' // Use the label of the new agent node
         docker {
             image 'docker:latest' // The base image for building the Docker image
             // args '-v /var/run/docker.sock:/var/run/docker.sock' // Bind Docker socket for building
