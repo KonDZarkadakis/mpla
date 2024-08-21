@@ -53,16 +53,8 @@ pipeline {
                 sh '''
                     echo "$DOCKER_HOST"
                     docker ps
-                    docker build -t test_mpla_kostaras_new ./mpla/
+                    docker build --no-cache -t test_mpla_kostaras_new ./mpla/
                 '''
-                // dir('mpla') {
-                //     // Build the Docker image using the Dockerfile in the repository
-                //     sh 'ls -alh'
-                //     sh 'pwd'
-                //     echo "$DOCKER_HOST"
-                //     sh 'docker ps'
-                //     sh 'docker build -t test_mpla_kostaras .'
-                // }
             }
         }
         
