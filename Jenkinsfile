@@ -3,9 +3,8 @@ pipeline {
     agent {
         docker {
             image 'docker:latest' // The base image for building the Docker image
-            // args '-v /var/run/docker.sock:/var/run/docker.sock' // Bind Docker socket for building
             args '--network=jenkins_gsis_jenkins_network -e DOCKER_HOST=tcp://docker-proxy:2375'
-            reuseNode true // Allows reusing the agent for the entire pipeline
+            reuseNode true
         }
     }
 
