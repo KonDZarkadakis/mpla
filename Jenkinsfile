@@ -54,7 +54,7 @@ pipeline {
                 sh '''
                     echo "$DOCKER_HOST"
                     docker ps
-                    docker build -t test_mpla_kostaras_new .
+                    docker build --no-cache -t test_mpla_kostaras_new .
                 '''
                 // dir('mpla') {
                 //     // Build the Docker image using the Dockerfile in the repository
