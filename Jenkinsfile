@@ -1,3 +1,4 @@
+currentBuild.displayName = "Docker-Agent#"+currentBuild.number
 pipeline {
     
     agent {
